@@ -21,109 +21,110 @@ function _init()
 end
 ---------------------------
 function _update()
- if     status==0 then --title menu
-  if (t>=1)    t-=1 
-  if t==0 then 
-   if blink==7 then 
-    blink=0 t=td  
-   elseif blink==0 then 
-    blink=7 t=td 
-   end
-  end
-  if     mmo==1 then --main menu selection setup
-   if     btnp(2) then 
-    mmo=3 blink=7 t=td
-   elseif btnp(3) then
-    mmo=2 blink=7 t=td
-   elseif btnp(5) then 
-    status=1
-   end
-  elseif mmo==2 then
-   if     btnp(2) then
-    mmo=1 blink=7 t=td
-   elseif btnp(3) then
-    mmo=3 blink=7 t=td
-   elseif btnp(5) then
-    status=2
-   end
-  elseif mmo==3 then 
-   if     btnp(2) then
-    mmo=2 blink=7 t=td
-   elseif btnp(3) then 
-    mmo=1 blink=7 t=td
-   elseif btnp(5) then
-    cls() 
-    stop()
-   end
-  end
- elseif status==1 then --game
-  if (btnp(4)) status=0
-  --
-  --
-  --
- elseif status==2 then --options
-  if (btnp(4)) status=0
-  --
-  --
-  --
-  --
- end
+	if     status==0 then --title menu
+		if (t>=1)    t-=1 
+		if t==0 then 
+			if     blink==7 then 
+				blink=0 t=td  
+			elseif blink==0 then 
+				blink=7 t=td 
+			end
+		end
+		if     mmo==1 then --main menu selection setup
+			if     btnp(2) then 
+				mmo=3 blink=7 t=td
+			elseif btnp(3) then
+				mmo=2 blink=7 t=td
+			elseif btnp(5) then 
+				status=1
+			end
+		elseif mmo==2 then
+			if     btnp(2) then
+				mmo=1 blink=7 t=td
+			elseif btnp(3) then
+				mmo=3 blink=7 t=td
+			elseif btnp(5) then
+				status=2
+			end
+		elseif mmo==3 then 
+			if     btnp(2) then
+				mmo=2 blink=7 t=td
+			elseif btnp(3) then 
+				mmo=1 blink=7 t=td
+			elseif btnp(5) then
+				cls() 
+				stop()
+			end
+		end
+	elseif status==1 then --game
+		if (btnp(4)) status=0
+		--
+		--
+		--
+	elseif status==2 then --options
+		if (btnp(4)) status=0
+		--
+		--
+		--
+		--
+	end
 end
 ---------------------------
 function _draw()
- cls()
- if     status==0 then --mainmenu
-  print(txt.a,_hcenter(txt.a),0,8)
-  print(txt.b,_hcenter(txt.b),8,8)
-  print(txt.c,_hcenter(txt.c),61,8)
-  print(txt.d,_hcenter(txt.d),69,8)
-  print(txt.e,_hcenter(txt.e),78,8)
-  print("*",_hcenter(lo(mmo))-8,mmp(mmo),blink)
- elseif status==1 then --game
-  print(txt.f,_hcenter(txt.f),0,7)
- elseif status==2 then --options
-  print(txt.g,_hcenter(txt.g),0,7)
- end
+	cls()
+	if     status==0 then --mainmenu
+		print(txt.a,_hcenter(txt.a),0,8)
+		print(txt.b,_hcenter(txt.b),8,8)
+		print(txt.c,_hcenter(txt.c),61,8)
+		print(txt.d,_hcenter(txt.d),69,8)
+		print(txt.e,_hcenter(txt.e),78,8)
+		print("*",_hcenter(lo(mmo))-8,mmp(mmo),blink)
+	elseif status==1 then --game
+		print(txt.f,_hcenter(txt.f),0,7)
+	elseif status==2 then --options
+		print(txt.g,_hcenter(txt.g),0,7)
+	end
 end
 -->8
 --title--
 
 --centers text
 function _hcenter(s)
- return 64-#s*2
- --
- --
- --
- --
+	return 64-#s*2
+	--
+	--
+	--
+	--
 end
 --timer for pointer blink
 function _timer()
- local t=100 ts=0
- if ts==0 then
-  if (t<=1) t-=1
- else ts+=1
- end
- return t
+	local t=100 ts=0
+	if ts==0 then
+		if (t<=1) t-=1
+	else 
+		ts+=1
+	end
+	return t
 end
 --sets main menu pointer position
 function mmp(s)
- if     s==1 then 
-  return 61
- elseif s==2 then
-  return 69
- elseif s==3 then
-  return 78
- end
+	if     s==1 then 
+		return 61
+	elseif s==2 then
+		return 69
+	elseif s==3 then
+		return 78
+	end
 end
 
 function lo(s)
- if     s==1 then 
-  return txt.c
- elseif s==2 then 
-  return txt.d
- elseif s==3 then
-  return txt.e
- end
+	if     s==1 then 
+		return txt.c
+	elseif s==2 then 
+		return txt.d
+	elseif s==3 then
+		return txt.e
+	end
 end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
